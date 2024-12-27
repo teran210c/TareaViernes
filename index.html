@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="palindromoSection">
+        <h1>Tarea JS</h1>
+        <h3>Palindromo</h3>
+        <p>Ingresa un numero entero positivo para evaluar si es o no un palindromo.</p>
+        <label for="numero">Ingresa el número a evaluar: <input type="number" id="numero"/></label>
+        <input type="submit" id="numeroBtn" />
+        <span id="palindromo"></span>
+        <script>
+
+        </script>
+    </section>
+    <section id="fibonacciSection">
+        <h1>Secuencia de Fibonacci</h1>
+        <h3>Ingresa el número de indices de la secuencia de Fibonacci que deseas ver.</h3>
+        <label for="fibonacci">Ingresa el número: <input type="number" id="fibonacci"/></label>
+        <input type="submit" id="fibonacciBtn" />
+        <span id="secuencia"></span>
+
+    </section>
+    <section>
+        <h1>Anagrma</h1>
+        <h3>Ingresa la palabra para evaluar si es un anagrama.</h3>
+        <label for="palabra">Ingresa la palabra: <input type="text" id="palabra"/></label>
+        <input type="submit" id="anagramaBtn">
+        <span id="es-anagrama"></span>
+    </section>
+
+    <script>
+        const num = document.getElementById('numero')
+        const esPalindromo = document.getElementById('palindromo')
+        const numeroBtn = document.getElementById('numeroBtn');
+        numeroBtn.addEventListener ('click', ()=> {
+            let array = num.value.toString().split('').map(Number);
+            let array2 = [];
+
+            for (let i = array.length -1; i >= 0; i--) {
+                array2.push(array[i]);
+            }
+
+            let prod = array.join('');
+            let prod2 = array2.join('');
+
+            if (prod === prod2) {
+                esPalindromo.textContent = "Es palindromo"
+            } else {
+                esPalindromo.textContent = "No es palindromo"
+            }
+
+        })
+
+        const fibonacciInput = document.getElementById('fibonacci')
+        const secuencia = document.getElementById('secuencia')
+        const fibonacciBtn = document.getElementById('fibonacciBtn')
+        fibonacciBtn.addEventListener ('click', () => {
+            const n = parseInt(fibonacciInput.value);
+            
+            let array = [];
+        for (let i = 0; i < n; i++) {
+            if (i === 0 || i === 1) {
+                array.push(1); 
+            } else {
+                array.push(array[i - 1] + array[i - 2]);
+            }
+        }
+
+        secuencia.textContent = array.join(', ');
+        })
+        const inputPalabra = document.getElementById('palabra')
+        const esAnagrama = document.getElementById('es-anagrama')
+        const anagramaBtn = document.getElementById('anagramaBtn')
+        anagramaBtn.addEventListener ('click', ()=> {
+            const palabra = inputPalabra.value.trim().toLowerCase();
+            let array = palabra.split('');
+            let array2 = [];
+
+            for (let i = array.length -1; i >= 0; i--) {
+                array2.push(array[i])
+            }
+
+            let palabra1 = array.join('');
+            let palabra2 = array2.join('');
+
+            if (palabra1 === palabra2) {
+                esAnagrama.textContent = "Es anagrama";
+            } else {
+                esAnagrama.textContent = "No es anagrama";
+            }
+
+        })
+        
+
+    
+
+
+
+    </script>
+
+</body>
+</html>
